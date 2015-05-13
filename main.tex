@@ -1,0 +1,762 @@
+\documentclass[12pt,letterpaper]{article}
+
+\def\myauthor{Vikram Dhillon}
+\def\mytitle{vd-vita}
+\def\myemail{dhillonv10@knights.ucf.edu}
+\def\myweb{opsbug.com}
+\def\myphone{407-683-3076}
+\def\mykeywords{
+  vikram dhillon, 
+  resume, 
+  curriculum, 
+  vita, 
+  curriculum vita, 
+  cv, 
+  vikram, 
+  dhillon, 
+  pdg
+}
+
+\setlength\parindent{0pt}
+
+\newenvironment{itemize*}%
+{\begin{itemize}%
+  \setlength{\itemsep}{0pt}}%
+{\end{itemize}}
+
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+%\usepackage{ocgtools}
+\usepackage{enumitem}
+\setlist{nolistsep,leftmargin=0.15in}
+\usepackage[log-declarations=false]{xparse}
+\usepackage[adobe-garamond]{mathdesign}
+\usepackage[no-math]{fontspec}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[margin=1.125in,top=1.375in,right=1in,left=2in]{geometry}
+\usepackage[strict]{changepage}
+\pagestyle{fancy}
+
+\usepackage[
+  ocgcolorlinks,
+  urlcolor={[rgb]{0,0,0.54}},
+  unicode,
+  plainpages=false,
+  pdfpagelabels,
+  pdftitle={\mytitle},
+  pdfauthor={\myauthor},
+  pdfkeywords={\mykeywords}
+]{hyperref}
+
+% fix ocgcolor link breaking; thanks due to Benjamin Lerner (http://goo.gl/VZKR7M)
+\makeatletter
+\AtBeginDocument{%
+  \newlength{\temp@x}%
+  \newlength{\temp@y}%
+  \newlength{\temp@w}%
+  \newlength{\temp@h}%
+  \def\my@coords#1#2#3#4{%
+    \setlength{\temp@x}{#1}%
+    \setlength{\temp@y}{#2}%
+    \setlength{\temp@w}{#3}%
+    \setlength{\temp@h}{#4}%
+    \adjustlengths{}%
+    \my@pdfliteral{\strip@pt\temp@x\space\strip@pt\temp@y\space\strip@pt\temp@w\space\strip@pt\temp@h\space re}}%
+  \ifpdf
+    \typeout{In PDF mode}%
+    \def\my@pdfliteral#1{\pdfliteral page{#1}}% I don't know why % this command...
+    \def\adjustlengths{}%
+  \fi
+  \ifxetex
+    \def\my@pdfliteral #1{\special{pdf: literal direct #1}}% isn't equivalent to this one
+    \def\adjustlengths{\setlength{\temp@h}{-\temp@h}\addtolength{\temp@y}{1in}\addtolength{\temp@x}{-1in}}%
+  \fi%
+  \def\Hy@colorlink#1{%
+    \begingroup
+      \ifHy@ocgcolorlinks
+        \def\Hy@ocgcolor{#1}%
+        \my@pdfliteral{q}%
+        \my@pdfliteral{7 Tr}% Set text mode to clipping-only
+      \else
+        \HyColor@UseColor#1%
+      \fi
+  }%
+  \def\Hy@endcolorlink{%
+    \ifHy@ocgcolorlinks%
+      \my@pdfliteral{/OC/OCPrint BDC}%
+      \my@coords{0pt}{0pt}{\pdfpagewidth}{\pdfpageheight}%
+      \my@pdfliteral{F}% Fill clipping path (the url's text) with current color
+      \my@pdfliteral{EMC/OC/OCView BDC}%
+      \begingroup%
+        \expandafter\HyColor@UseColor\Hy@ocgcolor%
+        \my@coords{0pt}{0pt}{\pdfpagewidth}{\pdfpageheight}%
+        \my@pdfliteral{F}% Fill clipping path (the url's text) with \Hy@ocgcolor
+      \endgroup%
+      \my@pdfliteral{EMC}%
+      \my@pdfliteral{0 Tr}% Reset text to normal mode
+      \my@pdfliteral{Q}%
+    \fi
+    \endgroup
+  }%
+}
+\makeatother
+% end fixes
+
+\newcommand{\ML}{\textsc{Matlab}}
+\newcommand{\Simu}{Simulink}
+\newcommand{\MLS}{\ML{}/\Simu{}}
+\newcommand{\apdl}{\textsc{APDL}}
+\newcommand{\ansys}{\textsc{Ansys}}
+\newcommand{\fluent}{\textsc{Fluent}}
+\newcommand\CPP{C/C\ensuremath{+}\ensuremath{+}}
+\newcommand{\Star}{\textsc{Star-CCM\ensuremath{+}}}
+
+\newcommand{\mhead}[1]{\leavevmode\marginpar{\sffamily\footnotesize #1}}
+\newcommand{\rdate}[1]{{\addfontfeature{Numbers=OldStyle} \hfill #1}}
+\renewcommand{\date}[1]{{\addfontfeature{Numbers=OldStyle} #1}}
+\renewcommand{\labelitemi}{-} 
+
+\setmainfont[
+  Ligatures={TeX,Common},
+  BoldFont={AGaramondPro-Semibold.otf}, % file name from the uploaded fonts needed here
+]{AGaramondPro-Regular.otf} %file name from the fonts needed again
+
+\setsansfont[
+  Ligatures={TeX,Common},
+  Letters=SmallCaps,
+  Color=660000,
+]{AGaramondPro-Regular.otf}
+
+\makeatletter % fix for \hrulefill w/ mathdesign package
+\def\hrulefill{\leavevmode\leaders \hrule height \rulethickness \hfill\kern\z@}
+\makeatletter
+
+\begin{document}\flushbottom
+
+\pagestyle{fancy} \setlength\headwidth{6.5in}
+\rhead{\textsc{vikram ~dhillon—cirriculum ~vitae—\thepage{} of \pageref*{LastPage}}} \cfoot{}
+\thispagestyle{empty}
+\begin{adjustwidth}{-1in}{}
+{\Huge
+  {\textsc{%
+    {\addfontfeature{Style=TitlingCaps}V}\kern-1.5ptikram 
+    {\addfontfeature{Style=TitlingCaps}D}hillon}
+  }
+}
+\hfill\hfill\hfill
+{
+    \begin{minipage}[b]{2in}
+    \flushleft \footnotesize 
+    11315 Rouse Run Circle \\ 
+    Orlando, FL~~32817
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{1.2in}
+    \flushright \footnotesize 
+    \href{}{Phone: \myphone} \\ %\texttt{}~
+    \href{mailto: \myemail}{\myemail} \\
+    \href{Blog: opsbug.com}{Blog: \myweb}
+  \end{minipage}
+}\par
+\hrulefill
+\end{adjustwidth}  
+\reversemarginpar 
+\setlength\marginparwidth{0.85in}
+\smallskip
+
+
+\mhead{Education}%
+\textbf{University of Central Florida,} Orlando, Florida \newline
+\emph{Bachlor of Science: \href{http://med.ucf.edu/biomed/academics/undergraduate-programs/bs-biomedical-sciences/}{Molecular Biology}} \rdate{\textcolor{magenta}{\textsc{2011}–\textsc{2015}}}
+
+\begin{itemize*}
+  \item {\href{http://www.cs.ucf.edu/research/bsb.php}{Bioinformatics Specialization}}
+  \item Relavent Minors: \href{http://catalog.ucf.edu/content/documents/programs/Bioengineering_Minor.pdf}{Bioengineering}, \href{http://catalog.ucf.edu/content/documents/programs/Philosophy_Minor.pdf}{Philosophy }
+  \item Advisor: \href{http://www.cs.ucf.edu/~xiaoman/}{Dr.~Xiaoman Shawn ~Li}
+  \item Thesis: Introduction to Metabolic Disorders
+  \item Relevant Coursework:\newline
+    \begin{tabular}{ll}
+      Biochemical Methods, & Quantitative Biological Methods \\
+      Structural Analysis, & Sequence Analysis \\
+      Advanced Physiology, & Virtual PhysioEx \\
+      Clinical Neuroscience, & Clinical Endocrinology \\
+      Immunobiology, & Microbial Metabolism \\
+    \end{tabular}
+   \item \textbf{Any relevant student records can be made available upon request}
+
+\end{itemize*}
+
+\bigskip
+
+\mhead{Research \newline Experience}%
+
+\textbf{Nanoparticle flow simulation,} University of Central Florida \newline
+\emph{Under Robert Van Gorder.} \rdate{\textcolor{magenta}{\textsc{Sep.}~2011–\textsc{Feb. 2012}}}
+
+\begin{itemize*} 
+  \item Created a computational simulation of nanoparticle transport in a blood vessel under the influence of a magnetic field in COMSOL
+  \item Learned about nanoparticles as drug-delivery systems and the therapeutic uses of targeted drug delivery
+  \item Learned about numerical modelling of nanoparticles and algorithms for design of nanoparticle coagulation
+\end{itemize*}
+
+\smallskip
+\smallskip
+
+\textbf{Calcium-based repriming of Imatinib,} University of Central Florida \newline
+\emph{Under Dr. Mohtashem Samsam.} \rdate{\textcolor{magenta}{\textsc{Summer 2012}}}
+
+\begin{itemize*} 
+  \item Wrote a short review on the pharmacological properties and function of Imatinib in the treatment of CML
+  \item Learned about drug repriming as a tool to combat drug resistance in second or third generation resistant cell lines
+  \item Learned about the two-hit hypothesis in cancer treatment and the crucial role of intracellular calcium in overcoming drug resistance
+\end{itemize*}
+
+\smallskip
+\smallskip
+
+\textbf{Functional Conservation of Enhancer Regions,} University of Central Florida and Sanford-Burnham Medical Research Institute \newline
+\emph{Under Dr. Xiaoman Li.} \rdate{\textcolor{magenta}{\textsc{Fall}~2011–\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Wrote algorithms to detect regions of genomic similarity (called motifs) across human and mice genome
+  \item Combined statistically significant motifs together into motif-modules. Motif-modules turn out to be better predictors of cross-genomic conservation
+  \item Transitioned to application of statistical significance to biological relevance of motifs - Determining conserved regions across human genome present in mice
+  \item High conservation correlated with functional preservation in the genomes
+\end{itemize*}
+
+\smallskip
+\smallskip
+
+\textbf{Neoplastic Metastasis via Differential Splicing,} University of Central Florida \newline
+\emph{Under Dr. Xiaoman Li.} \rdate{\textcolor{magenta}{\textsc{2014}–\textsc{present}}}
+
+\begin{itemize*} 
+  \item Generalized the statistical determination of functional conservation to a scoring mechanism
+  \item Applied the scoring mechanism to scoring mutations
+  \item Learned about exome-sequencing for cancer-datasets
+  \item Applied scoring scheme to the exome-sequencing data to determine which mutations are statistically significant
+  \item Linked the source of the significant mutations to alternative splicing
+  \item Determined the link between the alternative splicing causing selective mutations in tumor micro-environment 
+  \item Before the research could be published, another independent group published all the conclusions we had \href{http://www.ncbi.nlm.nih.gov/pubmed/25274489}{reached}
+\end{itemize*}
+
+\bigskip
+\mhead{Research \newline Funding}%
+
+\textbf{Research and Mentoring Program (RAMP),} University of Central Florida \newline
+\emph{Type: Fellowship} \newline
+\emph{Faculty Mentor: Dr. Xiaoman Li.} \rdate{\textcolor{magenta}{\textsc{2013}–\textsc{2015}}}
+
+\begin{itemize*} 
+  \item Research program at UCF supporting students for two years to start their research
+  \item Supported my research under Dr. Li working on sequence conservation and motif modules
+  \item Mentoring opportunities along with the research to guide young researchers on how to get started
+\end{itemize*}
+
+\smallskip
+\smallskip
+
+\textbf{Computational Inference of Microbial Community Structures from Environmental Shotgun Reads} \newline
+\emph{Type: National Science Foundation Award [\href{http://www.nsf.gov/awardsearch/showAward?AWD_ID=1218275
+}{No. 1218275}]} \newline
+\emph{PI: Dr. Xiaoman Li.} \rdate{\textcolor{magenta}{\textsc{Summer 2014}}}
+
+\begin{itemize*} 
+  \item NSF Grant obtained by my PI 
+  \item Supported my summer semester for a project on protein docking and modelling
+  \item Editing and proofreading of the grant proposal was done by me
+  \item First time for me being an active participant going through the entire life-cycle of applying for a grant and then receiving it
+\end{itemize*}
+
+\smallskip
+\smallskip
+
+\textbf{Young Entrepreneur and Scholar (YES) Scholarship Program,} University of Central Florida \newline
+\emph{Type: National Science Foundation Award [\href{http://www.nsf.gov/awardsearch/showAward?AWD_ID=0806931}{No. 0806931}]} \newline
+\emph{Faculty Mentor: Dr. Xiaoman Li.} \rdate{\textcolor{magenta}{\textsc{2015}–\textsc{present}}}
+
+\begin{itemize*} 
+  \item Supported my research under Dr. Li on alternative splicing mutations and the scoring mechanisms.  
+  \item Also worked on a project in metagenomics using single-cell genomics
+  \item The YES Program had three tracks: Research, Entrepreneurship or Industry Mentoring. For me, the best path was a combination of research and entrepreneurship which translated to me applying for the NSF I-Corps grant.
+\end{itemize*}
+
+\smallskip
+\smallskip
+
+\textbf{National Science Foundation Innovation-Corps Award} \newline
+\emph{Type: National Science Foundation Award [\href{http://www.nsf.gov/awardsearch/showAward?AWD_ID=1347356}{No. 1347356}]} \newline
+\emph{Faculty Mentor: Dr. David Metcalf.} \rdate{\textcolor{magenta}{\textsc{2015}–\textsc{present}}}
+
+\begin{itemize*} 
+  \item Part of the inaugural class of the NSF I-Corps program at UCF as the university became an I-Corps site
+  \item Received funding from the NSF I-Corps program to learn how to commercialize research 
+  \item Took a course on the Lean Launchpad methodologies for research commercialization
+  \item Learned the foundations of evidence based entrepreneurship and the core of creating an innovative venture based around just an idea
+\end{itemize*}
+
+\bigskip
+
+\mhead{Honors \& \newline Awards}%
+
+\textbf{Invited reviewer to Apress}
+\rdate{\textcolor{magenta}{\textsc{2015}}} 
+
+\begin{itemize*} 
+  \item Reviewer for advanced machine learning through R (statistical programming package)
+  \item Currently an Editor for the topic of advanced machine learning
+\end{itemize*}
+
+\smallskip
+
+\textbf{Showcase of Undergraduate Excellence}
+\rdate{\textcolor{magenta}{\textsc{2015}}} 
+
+\begin{itemize*} 
+  \item First place in life sciences division
+  \item Presented my research under Dr. Li on neoplastic progression due to alternative splicing mutations
+\end{itemize*}
+
+\smallskip
+
+\textbf{SourceCode B46 Capstone Event Judge}
+\rdate{\textcolor{magenta}{\textsc{2015}}} 
+
+\begin{itemize*} 
+  \item Invited judge for the K-5 student presentations
+\end{itemize*}
+
+\textbf{Semi finalist Business Model Competition}
+\rdate{\textcolor{magenta}{\textsc{2015}}} 
+
+\smallskip
+
+\textbf{Florida Undergraduate Research Conference}
+\rdate{\textcolor{magenta}{\textsc{2015}}} 
+
+\begin{itemize*} 
+  \item State-wide undergraduate conference: Poster presentation
+  \item Presented my research on alternative splicing and the scoring mechanism
+\end{itemize*}
+
+\smallskip
+
+\textbf{Sanford-Burnham Medical Research Institute Fellow}
+\rdate{\textcolor{magenta}{\textsc{Summer 2014}}} 
+
+\begin{itemize*} 
+  \item Studied Protiomics in the Biomarker Discovery Lab under Dr. Shi-Jian Ding
+  \item Designed algorithms for protein peak detection from mass-spectrometry data
+\end{itemize*}
+
+\smallskip
+
+\textbf{Reactome Project Fellow}
+\rdate{\textcolor{magenta}{\textsc{2014}}} 
+
+\begin{itemize*} 
+  \item National Recognition: Only undergraduate to be mentored by the Reactome team
+  \item Worked under Dr. Lisa Matthews to learn how Reactome annotates and reviews the biological pathways
+\end{itemize*}
+
+\smallskip
+
+\textbf{Pitch your idea: UCF Blackstone Launchpad}
+\rdate{\textcolor{magenta}{\textsc{2014}}} 
+
+\begin{itemize*} 
+  \item Second place in the contest
+  \item First cryptocurrency startup to come out of Blackstone Launchpad
+\end{itemize*}
+
+\smallskip
+
+\textbf{Showcase of Undergraduate Excellence}
+\rdate{\textcolor{magenta}{\textsc{2014}}} 
+
+\begin{itemize*} 
+  \item Second place in life sciences division
+  \item Presented my research under Dr. Li on functional conservation of regulatory elements 
+\end{itemize*}
+
+\smallskip
+
+\textbf{TEDxUCF Semi Finalist Presenter} \rdate{\textcolor{magenta}{\textsc{2013}}} 
+
+\smallskip
+
+\textbf{Share\LaTeX Advisory Program} \rdate{\textcolor{magenta}{\textsc{2013}}} 
+
+\begin{itemize*} 
+  \item National Recognition
+  \item 1 of 8 selected from the US
+\end{itemize*}
+
+\smallskip
+
+\textbf{ACS Florida Logo Contest Winner} \rdate{\textcolor{magenta}{\textsc{2013}}}
+
+\begin{itemize*} 
+  \item The American Chemistry Society (ACS) Florida Chapter did not have a proper logo so they organized a contest to obtain one
+  \item Won the contest and gave ACS Florida their new logo!
+\end{itemize*}
+
+\smallskip
+
+\textbf{Youngest student to take graduate class in Immunobiology at University of Central Florida} \rdate{\textcolor{magenta}{\textsc{2013}}} 
+
+\textbf{Invited synbio4All Developer and Designer} \rdate{\textcolor{magenta}{\textsc{2012}}}
+
+\begin{itemize*} 
+  \item Part of trans-Atlantic collaboration with Paris-Descartes University 
+  \item Teaching citizen scientists about synthetic biology
+\end{itemize*}
+
+\smallskip
+
+\textbf{Dean's List: For a few semesters through my undergraduate career}
+\rdate{\textcolor{magenta}{\textsc{2011}–\textsc{2015}}}
+
+\bigskip
+
+\mhead{Conferences}
+
+\textbf{TED Talk: TEDxUCF}
+\rdate{\textcolor{magenta}{\textsc{2015}}}
+
+\begin{itemize*} 
+  \item Presentation: Engineering human life
+\end{itemize*}
+
+\smallskip
+
+\textbf{BSides Orlando}
+\rdate{\textcolor{magenta}{\textsc{2015}}}
+
+\begin{itemize*} 
+  \item Presentation: Decentralized Resource Management
+\end{itemize*}
+
+\smallskip
+
+\textbf{Florida Undergraduate Research Conference}
+\rdate{\textcolor{magenta}{\textsc{2015}}}
+
+\begin{itemize*} 
+  \item Poster: Neoplastic Metastasis via Differential Splicing
+\end{itemize*}
+
+\smallskip
+
+\textbf{Showcase of Undergraduate Excellence}
+\rdate{\textcolor{magenta}{\textsc{2015}}}
+
+\begin{itemize*} 
+  \item Poster: Neoplastic Metastasis via Differential Splicing
+\end{itemize*}
+
+\smallskip
+
+\textbf{CloudSpace Android Meetup}
+\rdate{\textcolor{magenta}{\textsc{2015}}}
+
+\begin{itemize*} 
+  \item Presentation: Design and application of enterprise apps
+\end{itemize*}
+
+\smallskip
+
+\textbf{CloudSpace Ruby Meetup}
+\rdate{\textcolor{magenta}{\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Presentation: Blogging engine using Jekyll
+\end{itemize*}
+
+\smallskip
+
+
+\textbf{CloudSpace JavaScript Meetup}
+\rdate{\textcolor{magenta}{\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Presentation: MEAN stack
+\end{itemize*}
+
+\smallskip
+
+\textbf{Open Web Application Security Project (OWASP)}
+\rdate{\textcolor{magenta}{\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Presentation: Blog like a hacker
+\end{itemize*}
+
+\smallskip
+
+\textbf{International Conference on Quantitative Finance}
+\rdate{\textcolor{magenta}{\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Poster: Healthcoin Data Decentralization
+\end{itemize*}
+
+\smallskip
+
+\textbf{BSides Orlando}
+\rdate{\textcolor{magenta}{\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Presentation:  Wrecking the ultimate defense: Human Body
+\end{itemize*}
+
+\smallskip
+
+\textbf{Showcase of Undergraduate Excellence}
+\rdate{\textcolor{magenta}{\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Poster: Functional Conservation of Enhancer Regions
+\end{itemize*}
+
+\smallskip
+
+\textbf{American Chemistry Society: National Conference}
+\rdate{\textcolor{magenta}{\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Poster: Synthesis and Preparation of PNIPAAm
+\end{itemize*}
+
+\smallskip
+
+\textbf{AGILE: Orlando}
+\rdate{\textcolor{magenta}{\textsc{2012}}}
+
+\begin{itemize*} 
+  \item Presentation: AGILE Software Design Principals
+\end{itemize*}
+
+\bigskip
+
+\mhead{Publications}%
+
+\textbf{Dhillon V.} Ethics of engaging in low-impact research. \textit{In preparation}. Undergraduate Research Journal, University of Central Florida.
+
+\smallskip
+
+\textbf{Dhillon V}, Li X (2015). Single-Cell Genome Sequencing for Viral-Host Interactions. J Comput Sci Syst Biol 8: 160-165. doi:10.4172/jcsb.1000183
+
+\smallskip
+
+Ding J, \textbf{Dhillon V}, Li X, Hu H (2014). Systematic discovery of cofactor motifs from ChIP-seq data by SIOMICS. doi:10.1016/j.ymeth.2014.08.006
+
+\smallskip
+
+\textbf{Dhillon V.} Role of Neutrophil Extracellular Traps (NETs) in Innate Immunity. \textit{Accepted}. Undergraduate Research Journal, University of Central Florida.
+
+\smallskip
+
+\textbf{Dhillon V.} Professional blogging and development with Jekyll. \textit{In press}.\textbf{Apress}. 
+
+\bigskip
+
+\mhead{Leadership \newline Experience}%
+
+\textbf{Entrepreneurial Lead: HealthShares} 
+\rdate{\textcolor{magenta}{\textsc{2015-Present}}}
+
+\begin{itemize*} 
+  \item Founder of HealthShares startup through NSF I-Corps program
+  \item Currently the tech. lead, my position is in part responsible to the NSF-grant
+\end{itemize*}
+
+\smallskip
+
+\textbf{Tech Inoculator: \href{http://increasingprobability.com/}{Increasing Probability} } 
+\rdate{\textcolor{magenta}{\textsc{2015-Present}}}
+
+\begin{itemize*} 
+  \item Pioneered the idea of a \textit{technology inoculator} for the startup world
+  \item In microbiology labs, before a culture is set for incubation, it is inoculated so that the bacteria can slowly adapt to the environment. 
+  \item A tech inoculator is based on the same principle, before entering a tech incubator, the entrepreneurs may benefit greatly from a tech inoculator
+  \item Main purpose of an inoculator is to give overview of the field, the latest technologies and their impact.
+  \item Allows the entrepreneur to expand their mind and look at the problems they face daily from different angles.
+  \item An accelerator provides immense growth opportunities for a startup but to get there, the entrepreneurs need to be inoculated into the culture, environment and available resources
+\end{itemize*}
+
+\smallskip
+
+\textbf{iGEM@UCF: Officer} 
+\rdate{\textcolor{magenta}{\textsc{2014}}}
+
+\begin{itemize*} 
+  \item Student Organization: Working on biotechnology challenges for iGEM competition
+\end{itemize*}
+
+\smallskip
+
+\textbf{Mendeley User Groups} 
+\rdate{\textcolor{magenta}{\textsc{2013}}}
+
+\begin{itemize*} 
+  \item Created two user groups containing the latest papers in the area:
+  \item Nano-Oncology and Neuro Hardware
+\end{itemize*}
+
+\smallskip
+
+\textbf{Florida Hospital Volunteer - Summer volunteering} 
+\rdate{\textcolor{magenta}{\textsc{2012}–\textsc{2013}}}
+
+\begin{itemize*} 
+  \item First position in ER and OR shadowing
+  \item Second position in Patient Admissions and data entry
+\end{itemize*}
+
+\bigskip
+
+\mhead{Mentoring}%
+
+Teaching Assistant: \textbf{Clinical Neuroscience} (Dr. Samsam)
+\rdate{\textcolor{magenta}{\textsc{Spring 2015}}}
+
+\smallskip
+
+Teaching Assistant: \textbf{Chemistry I} (Dr. Heider)
+\rdate{\textcolor{magenta}{\textsc{Fall 2014}}}
+
+\smallskip
+
+Mentor for \textbf{Society for Science: Science and Engineering Fair}
+\rdate{\textcolor{magenta}{\textsc{Fall 2013}}}
+
+\begin{itemize*} 
+  \item Under Dr. Li to a high school student: Sonia Quadar
+\end{itemize*}
+
+\smallskip
+
+Teaching Assistant: \textbf{Structural Analysis - Bioinformatics} (Dr. Li)
+\rdate{\textcolor{magenta}{\textsc{Spring 2013}}}
+
+\smallskip
+
+Teaching Assistant: \textbf{Organic Chem 1} (Dr. Miles)
+\rdate{\textcolor{magenta}{\textsc{Fall 2013}}}
+
+\smallskip
+
+Teaching Assistant: \textbf{Human Anatomy} (Dr. Samsam)
+\rdate{\textcolor{magenta}{\textsc{Fall 2012}}}
+
+\smallskip
+
+Teaching Assistant: \textbf{Open Source Technologies} (Dr. Becka Morgan)
+\rdate{\textcolor{magenta}{\textsc{Fall 2012}}}
+
+\begin{itemize*} 
+  \item Online course taught at Western Oregon University
+  \item TAs placed through Ubuntu Developer's program
+\end{itemize*}
+
+\bigskip
+
+
+\mhead{Software \newline Development}%
+
+\textbf{Network Security Analyst.} HostDime
+\rdate{\textcolor{magenta}{\textsc{Oct 2012}–\textsc{Mar 2013}}}
+
+\begin{itemize*} 
+  \item Big Data security and neural-net implementations
+\end{itemize*}
+
+\smallskip
+
+\textbf{Server Analyst I.} HostDime
+\rdate{\textcolor{magenta}{\textsc{Mar 2013}–\textsc{Aug 2013}}}
+
+\begin{itemize*} 
+  \item Load-analysis for servers and server management
+\end{itemize*}
+
+\smallskip
+
+\textbf{Grsec Kernel Maintainer} On Sourceforge
+\rdate{\textcolor{magenta}{\textsc{Spring 2013}}}
+
+\begin{itemize*} 
+  \item Custom bioinformatics kernel with multi-threading and additional security patches
+\end{itemize*}
+
+\smallskip
+
+\textbf{Xenomai Kernel Maintainer} On Sourceforge
+\rdate{\textcolor{magenta}{\textsc{Fall 2012}}}
+
+\begin{itemize*} 
+  \item Custom realtime kernel optimized for mass-spec proteiomics data analysis
+\end{itemize*}
+
+\smallskip
+
+\textbf{Repo Admin: System Administrator} 
+\rdate{\textcolor{magenta}{\textsc{Fall 2012}}}
+
+\begin{itemize*} 
+  \item Hosting and management of data-processing Perl scripts
+  \item Management of over 1000 user-created repositories
+\end{itemize*}
+
+\smallskip
+
+\textbf{Ubuntu Core developer} 
+\rdate{\textcolor{magenta}{\textsc{2010}–\textsc{2011}}}
+
+\begin{itemize*} 
+  \item Volunteer effort
+  \item Documenting the entire software release
+\end{itemize*}
+
+\smallskip
+
+\textbf{eprentise Summer internship} 
+\rdate{\textcolor{magenta}{\textsc{Fall 2010}}}
+
+\begin{itemize*} 
+  \item Data migration analyst
+\end{itemize*}
+
+\medskip
+
+\emph{Working knowledge:}\newline%—comfortable using in a professional setting
+\MLS{}, 
+COMSOL Multiphysics,
+Galaxy,
+BLAST,
+\CPP{}, 
+Visual Studio, 
+Microsoft Office Suite, 
+Adobe Creative Suite, 
+HTML/CSS, 
+jQuery,
+\LaTeX{},
+Vim, 
+Git,
+SVN,
+Arch Linux, 
+Mac OS X, 
+Windows 7/8
+
+\medskip
+\emph{Basic knowledge:}\newline%—would require some training/use to refresh my memory
+Autodesk Products Suite, 
+LabVIEW,
+Modelica/Dymola
+
+\rfoot{Updated: May 2015}
+
+\end{document}
